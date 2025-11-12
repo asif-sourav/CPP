@@ -1,38 +1,41 @@
-public class SelectionSortExample {
+import java.util.Scanner;
+
+public class SelectionSortEasy {
     public static void main(String[] args) {
-        int[] arr = {7, -5, 3, 2, 1, 0, 45};
-        int n = arr.length;
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Original Array:");
-        printArray(arr);
+        // Take array size
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
 
-        // Selection Sort algorithm
+        int[] arr = new int[n];
+
+        // Take array input
+        System.out.println("Enter " + n + " integers:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        // Selection Sort
         for (int i = 0; i < n - 1; i++) {
-            int minIndex = i;
+            int min = i;
             for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
+                if (arr[j] < arr[min]) {
+                    min = j;
                 }
             }
-
-            // Swap arr[i] and arr[minIndex]
+            // Swap
             int temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = temp;
+            arr[i] = arr[min];
+            arr[min] = temp;
         }
 
-        System.out.println("\nSorted Array:");
-        printArray(arr);
-    }
-
-    // Helper method to print array elements
-    static void printArray(int[] arr) {
-        System.out.print("[");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-            if (i < arr.length - 1)
-                System.out.print(", ");
+        // Print sorted array
+        System.out.println("Sorted Array (Ascending):");
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
         }
-        System.out.println("]");
+
+        sc.close();
     }
 }
